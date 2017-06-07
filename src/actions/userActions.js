@@ -1,10 +1,17 @@
 export function fetchUser () {
-  return {
-    type: "FETCH_SUCCESS",
-    payload: {
-      first_name: "ahmad",
-      last_name: "syahir",
-      email: "ahmad@syahir.com",
-    }
-  }
+  return fetch('http://localhost:3000/api/users/user.json')
+    .then((response) => response.json())
+    .then((responseJson) => {
+      return {
+        type: "FETCH_SUCCESS",
+        payload: responseJson
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+      return {
+        type: "FETCH_REJECTED",
+        payload: error
+      }
+    });
 }

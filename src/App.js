@@ -3,16 +3,16 @@ import logo from './logo.svg';
 import './App.css';
 
 import Navigation from './components/Route';
-
 import { connect } from 'react-redux';
-
-// where call to api live
 import { fetchUser } from './actions/userActions';
 
 class App extends Component {
 
   componentWillMount(){
-    this.props.dispatch(fetchUser())
+    fetchUser()
+      .then((data) => {
+        return this.props.dispatch(data)
+      });
   }
 
   render() {
@@ -24,7 +24,7 @@ class App extends Component {
         </div>
 
         <Navigation />
-
+        <h1>{this.props.user.first_name}</h1>
       </div>
     );
   }
