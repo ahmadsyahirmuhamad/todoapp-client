@@ -2,10 +2,19 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import User from './components/User';
-import Todo from './components/Todo';
+import Navigation from './components/Route';
+
+import { connect } from 'react-redux';
+
+// where call to api live
+import { fetchUser } from './actions/userActions';
 
 class App extends Component {
+
+  componentWillMount(){
+    this.props.dispatch(fetchUser())
+  }
+
   render() {
     return (
       <div className="App">
@@ -13,14 +22,31 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React</h2>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        <User />
-        <Todo />
+
+        <Navigation />
+
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    user: state.user.user,
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    dispatch: dispatch
+  }
+}
+
+
+const VisibleApp = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App)
+
+
+export default VisibleApp
