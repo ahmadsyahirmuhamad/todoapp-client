@@ -4,7 +4,7 @@ import './App.css';
 
 import Navigation from './components/Route';
 import { connect } from 'react-redux';
-import { fetchUser } from './actions/userActions';
+import { fetchUser, setUserFirstName } from './actions/userActions';
 
 class App extends Component {
 
@@ -25,6 +25,8 @@ class App extends Component {
 
         <Navigation />
         <h1>{this.props.user.first_name}</h1>
+
+        <button onClick={() => this.props.dispatch(setUserFirstName("jon"))}>Click</button>
       </div>
     );
   }

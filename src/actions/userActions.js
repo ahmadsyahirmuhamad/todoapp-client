@@ -15,3 +15,12 @@ export function fetchUser () {
       }
     });
 }
+
+
+export function setUserFirstName (name) {
+  return {
+    type: "FETCH_SUCCESS",
+    payload: { first_name: name}
+  }
+}
+
