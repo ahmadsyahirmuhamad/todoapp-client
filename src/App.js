@@ -41,7 +41,7 @@ class App extends Component {
 
         <button onClick={() => this.props.dispatch(setUserFirstName("jon"))}>Click</button>
 
-        <TodoList todos={todos}/>
+        <TodoList />
       </div>
     );
   }
