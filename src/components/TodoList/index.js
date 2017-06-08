@@ -1,15 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
 import { fetchTodos } from '../../actions/todoActions';
 
 
 class TodoList extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {};
-  }
 
   fetchTodos() {
     fetchTodos()
@@ -38,7 +32,6 @@ class TodoList extends Component {
 
 const mapStateToProps = state => {
   return {
-    user: state.user.user,
     todos: state.todo.todos,
   }
 }
