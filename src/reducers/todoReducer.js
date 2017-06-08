@@ -8,25 +8,25 @@ const initialState = {
 export default function reducer(state=initialState, action) {
 
   switch(action.type){
-    case "FETCH_TODOs":{
+    case "FETCH_TODOS":{
       return {
         ...state,
         fetching: true
       }
     }
-    case "FETCH_REJECTED":{
+    case "FETCH_TODOS_REJECTED":{
       return {
         ...state,
         fetching: false,
         error: action.payload
       }
     }
-    case "FETCH_SUCCESS":{
+    case "FETCH_TODOS_SUCCESS":{
       return {
         ...state,
         fetching: false,
         fetch: true,
-        user: action.payload
+        todos: action.payload
       }
     }
     default: {

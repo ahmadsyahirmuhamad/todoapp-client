@@ -3,14 +3,14 @@ export function fetchUser () {
     .then((response) => response.json())
     .then((responseJson) => {
       return {
-        type: "FETCH_SUCCESS",
+        type: "FETCH_USER_SUCCESS",
         payload: responseJson
       }
     })
     .catch((error) => {
       console.error(error);
       return {
-        type: "FETCH_REJECTED",
+        type: "FETCH_USER_REJECTED",
         payload: error
       }
     });
@@ -19,7 +19,7 @@ export function fetchUser () {
 
 export function setUserFirstName (name) {
   return {
-    type: "FETCH_SUCCESS",
+    type: "FETCH_USER_SUCCESS",
     payload: { first_name: name}
   }
 }

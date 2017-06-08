@@ -6,7 +6,16 @@ import Navigation from './components/Route';
 import { connect } from 'react-redux';
 import { fetchUser, setUserFirstName } from './actions/userActions';
 
+import TodoList from './components/TodoList';
+
+
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+    };
+  }
 
   componentWillMount(){
     fetchUser()
@@ -15,7 +24,11 @@ class App extends Component {
       });
   }
 
+
   render() {
+    const { user, todos } = this.props;
+
+
     return (
       <div className="App">
         <div className="App-header">
@@ -24,9 +37,11 @@ class App extends Component {
         </div>
 
         <Navigation />
-        <h1>{this.props.user.first_name}</h1>
+        <h1>{user.first_name}</h1>
 
         <button onClick={() => this.props.dispatch(setUserFirstName("jon"))}>Click</button>
+
+        <TodoList todos={todos}/>
       </div>
     );
   }
@@ -35,6 +50,7 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     user: state.user.user,
+    todos: state.todo.todos,
   }
 }
 
